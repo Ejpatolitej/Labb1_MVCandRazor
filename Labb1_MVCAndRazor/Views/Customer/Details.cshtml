@@ -1,0 +1,42 @@
+﻿@model Customer
+
+<a asp-action="UpdateCustomer" asp-route-id="@Model.CustomerID" class="btn btn-warning">
+	<i>Edit</i>
+</a>
+<br />
+
+<div>
+	<p>ID: @Model.CustomerID</p>
+	<p>Name: @Model.CustomerName</p>
+	<p>Email: @Model.CustomerEmail</p>
+	<p>Phone Number: @Model.CustomerPhone</p>
+	<br />
+</div>
+
+<div>
+	<a asp-action="NewLoan" asp-route-id="@Model.CustomerID" class="btn btn-sm btn-success">
+		<i class="fa-thin fa-plus"></i> New Loan
+	</a>
+	<h3>Loans</h3>
+	<br />
+	@if (Model.Loans != null)
+	{
+		@foreach (var loan in Model.Loans)
+		{
+			<p>@loan.book.Title</p>
+			if (loan.IsReturned == false)
+			{
+				<p>Book has not been returned</p>
+				<a asp-action="ReturnBook" asp-route-loanId="@loan.LoanID" asp-route-customerId="@Model.CustomerID">
+					<i>return</i>
+				</a>
+				<br />
+			}
+			else
+			{
+				<p>Book has been returned</p>
+			}
+			<br />
+		}
+	}
+</div>

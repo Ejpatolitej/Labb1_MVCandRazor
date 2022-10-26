@@ -1,0 +1,27 @@
+﻿@model CustomerViewModel
+
+<a asp-action="AddCustomer" class="btn btn-sm btn-success">
+	<i class="fa-thin fa-plus"></i> New Customer
+</a>
+<br />
+
+<h2>Customers</h2>
+<br />
+@foreach (var customer in Model.Customers)
+{
+	<p>@customer.CustomerName</p>
+	<p>@customer.CustomerEmail</p>
+	<p></p>
+	<form asp-action="Delete" asp-route-id="@customer.CustomerID">
+		<div class="btn-group btn-group-sm">
+			<a asp-action="Details" asp-route-id="@customer.CustomerID" class="btn btn-warning">
+				<i>Details</i>
+			</a>
+			<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this transaction?')">
+				<i>Delete</i>
+			</button>
+		</div>
+	</form>
+	<p></p>
+	<br />
+}

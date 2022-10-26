@@ -1,0 +1,7 @@
+﻿@model AddLoanViewModel
+
+@foreach (var book in Model.Books)
+{
+	<a asp-action="AddLoan" asp-route-bookId="@book.BookID" asp-route-customerId="@Model.CustomerId" class="btn">@book.Title</a>
+	<br />
+}

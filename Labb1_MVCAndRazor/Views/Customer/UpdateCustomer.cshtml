@@ -1,0 +1,31 @@
+﻿@model Customer
+
+<form asp-action="UpdateCustomer" autocomplete="off">
+	<input type="hidden" asp-for="@Model.CustomerID" />
+
+	<div>
+		<p>
+			<label asp-for="@Model.CustomerName" class="control-label"></label>
+			<input asp-for="@Model.CustomerName" class="form-control" />
+		</p>
+	</div>
+	<div>
+		<p>
+			<label asp-for="@Model.CustomerEmail" class="control-label"></label>
+			<input asp-for="@Model.CustomerEmail" class="form-control" />
+		</p>
+	</div>
+	<div>
+		<p>
+			<label asp-for="@Model.CustomerPhone" class="control-label"></label>
+			<input asp-for="@Model.CustomerPhone" class="form-control" />
+		</p>
+	</div>
+
+	<div>
+		<input type="submit" value="Submit" class="btn btn-primary w-100" />
+	</div>
+	<div>
+		<a asp-action="Index" class="btn btn-secondary w-100">View All Customers</a>
+	</div>
+</form>
